@@ -1,10 +1,8 @@
--- TITLE:           rMat.m2
--- AUTHORS:         Lucas Rizzolo
--- DESCRIPTION:     Establishes various functions to test the Derksen-Gandini algorithm with varying data sets,
---                  of varying randomness
--- LAST MODIFIED:   Wed April 21
+-- TITLE:           testInv_rMat.m2
+-- AUTHORS:         Francesca Gandini, Sam Ratliff, Lucas Rizzolo
+-- DESCRIPTION:     Tests the hash-table generation algorithm 
+-- LAST MODIFIED:   Monday, August 19
 
--- WIP, may not even compile. I'd recommend copy and pasting interesting things into a different place to test them.
 
 needsPackage "InvariantRing"
 
@@ -205,29 +203,10 @@ testInvariants = (t,d) -> (
     print invaraints A
 )
 
---**** Section Three: Testing the code ****--
--- VERY MUCH WIP
---List of different things to test
-varSizes = {1,2,3,4,5,6,7,8,9} -- Possible numbers for the variables in the ring
-primeSizes = {} -- D
-weightMatrices = {} --Different weight matrices to test. Code makes sure that it only uses ones that make sense
-
-
---run through every test case that we want
-
-
 --**** Section Four: Notes ****--
 -- Notes:
 --
 --* The dimension is a list of each Z_p. Ex.: (3,5,7) -> Z_3, Z_5, Z_7.
--- I'm making a concat to add lists together
--- This will be useful in creating a group of random order
---
---* Making a function to use a random prime would be useful. This could be
--- accomplished by searching through a list of primes?
---
---* I'm going to eventually try and make this a package, but it needs a lot of polish
 --
 --* I want to make a parallel version of a lot of this
 --
---* to get size of list L do #L
