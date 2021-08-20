@@ -1,4 +1,4 @@
-ELCOME TO THE INVARIANT CALCULATOR PACKAGE!
+WELCOME TO THE INVARIANT CALCULATOR PACKAGE!
 
 VERSION: 1.0
 _______________________________________________________________________________________________________
