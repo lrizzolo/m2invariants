@@ -79,7 +79,7 @@ consoleMat (String,String) := (numCol,ins) ->(
     mList = pack(matList,cols);
 )
 
---Method for grabbing a list from a string
+--Method for grabbing a list from a string, only looking for numbers
 stringToList = method()
 stringToList String := s -> (l = select("[0-9]+",s); r = for i in l list value i; return r)
 
@@ -106,4 +106,4 @@ prepMat String := s ->(
     return mat;
 )
 
-
+--Proper method for grabbing a list from a string, looking for anything inbetween {} delimited by ,

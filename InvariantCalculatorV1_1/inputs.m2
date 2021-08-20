@@ -1,6 +1,4 @@
---def read method accepting exit at any point
-eRead = method();
-eRead String := s -> (ins = read s; if ins == "exit" then return false else return ins)
+
 
 --def user line-by-line input
 userIn = method()
@@ -27,12 +25,17 @@ userIn Boolean := (cont) -> (
         );
         
         --Try to input the weight matrix. If an error occurs, handle it with grace
+        try
         inp = eRead "\nInput the matrix ({m1,m2,m3},{m4,m5,m6},...):\n";
-        if instance(inp,Boolean) and inp == false then (cont=false; continue);
+        if instance(inp,Boolean) and inp == false then (cont=false; continue)
+        else if not instance(inp,String) then(
+            <<"\nError with input, please try again!";
+            continue;
+        );
         try(wList = prepMat(inp))
         then(
             wList = prepMat(inp);
-            wMat = matrix wList;
+            if #wList > 0 then(wMat = matrix wList;) else (<<"Error, could not read list! Please try again\n"; continue);
         )
         else(
             <<"\nCould not read input! Please try again!\n";
@@ -47,6 +50,7 @@ userIn Boolean := (cont) -> (
             d = stringToList(inp);
             
             --check for improper input
+            if #d == 0 then(<<"Error, could not read list! Please try again\n"; continue);
         )
         else (
             <<"\n Could not read your input! Please try again!\n";
@@ -55,11 +59,23 @@ userIn Boolean := (cont) -> (
         
         --Pass off the data to the algorithms
         if useGenAlg then(
-            genAlg(R,wMat,d)
+            try(genAlg(R,wMat,d))
+            then(
+                genAlg(R,wMat,d)
+            )
+            else(
+                <<"\nError with input data! Please try again\n"
+            )
         )
         else(
             if useDGAlg then(
-                dGAlg(R,wMat,d)
+                try(DGAlg(R,wMat,d))
+                then(
+                    DGAlg(R,wMat,d)
+                )
+                else(
+                    <<"\nError with input data! Please try again\n"
+                )
             )
             else (
                 if useParAlg then(
@@ -75,18 +91,26 @@ userIn Boolean := (cont) -> (
 )
 
 --def file-in
+--not implemented
 fileIn = method()
 fileIn Boolean := (cont) -> (
+    while cont and not term do(
+        <<"File input/output has not been implemented in this build due to a lack of stability.\nDefaulting to console in/out";
+        cont = false;
+    );
+    userIn true;
     exit;
 )
 
 --def console-out
+--not implemented
 consOut = method()
 consOut Boolean := (cont) ->(
     exit;
 )
 
 --def file-out
+--not implemented
 fileOut = method()
 fileOut Boolean := (cont) ->(
     exit;
@@ -99,13 +123,19 @@ betterIn Boolean := (cont) ->(
     while cont and not term do(
         in1 = eRead "\nPlease input the field:\t";
         in2 = eRead "\nPlease input the number of variables:\t";
+        if(instance(in2,Symbol)) then (<<"Error! Could not read number, please try again!"; continue);
         R = consoleRing(in1,in2);
         
         inp = eRead "\nInput the matrix ({m1,m2,m3},{m4,m5,m6},...):\n";
-        if instance(inp,Boolean) and inp == false then (cont=false; continue);
+        if instance(inp,Boolean) and inp == false then (cont=false; continue)
+        else if not instance(inp,String) then(
+            <<"\nError with input, please try again!";
+            continue;
+        );
         try(wList = prepMat(inp))
         then(
             wList = prepMat(inp);
+            if #wList == 0 then(<<"Error, could not read list! Please try again\n"; continue);
             wMat = matrix wList;
         )
         else(
@@ -121,6 +151,7 @@ betterIn Boolean := (cont) ->(
             d = stringToList(inp);
             
             --check for improper input
+            if #d==0 then (<<"Error, could not read list! Please try again!"; continue)
         )
         else (
             <<"\n Could not read your input! Please try again!\n";
@@ -149,11 +180,9 @@ betterIn Boolean := (cont) ->(
 )
 
 --def for saving info
-saveCurrent
-
-(Ring, List, Matrix)
 
 --def calling method for the algorithms
+--Not implemented.
 inPass = method()
 inPass (Ring,Matrix,List,Boolean) := (r,mat,lis,runGens) ->(
     if runGens then genAlg(r,mat,lis) else dGAlg(r,mat,lis)

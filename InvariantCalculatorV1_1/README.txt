@@ -1,6 +1,6 @@
-WELCOME TO THE INVARIANT CALCULATOR PACKAGE!
+ELCOME TO THE INVARIANT CALCULATOR PACKAGE!
 
-VERSION: 1.1
+VERSION: 1.0
 _______________________________________________________________________________________________________
 A PACKAGE CREATED FOR EXPLORING INVARIANTS
 WITH MACAULAY2
@@ -63,6 +63,9 @@ UI in helping mathematicians who aren't familiar with computer science use our a
 however, I felt that it would also be important to have our code be open source and available to be used
 outside of the Calculator environment. I will be providing more documentation on how to use the algorithms
 outside of the environment in the future.
+
+	The best way to improve on what's been done is through community-driven improvements, so please
+feel free to do whatever you wish to my code.
 
 Thank you,
 Lucas
