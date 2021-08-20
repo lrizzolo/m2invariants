@@ -61,7 +61,10 @@ menu ZZ := n ->(
                     if n==4 then << (<<"\nThis menu has not yet been implemented.\n"; menu 0) else(
                         if n==5 then (<<"EXITING"; term = true) else(
                             r = read "Enter in the menu option number:\t";
-                            menu (value r);
+                            if (not instance(value r, ZZ)) then(<<"Please enter a number!"; menu 0)
+                            else(
+                                menu (value r);
+                            )
                         )
                     )
                 )
@@ -84,7 +87,10 @@ opMenu ZZ := n ->(
                     if n==3 then (<<"\nThis is not implemented yet, defaulting to 2"; opMenu 0) else(
                         if n==4 then (<<"EXITING"; menu 0) else(
                             r = read "Enter in the option number:\t";
-                            opMenu (value r);
+                            if (not instance(value r, ZZ)) then(<<"Please enter a number!"; opMenu 0)
+                            else(
+                                opMenu (value r);
+                            )
                         )
                     )
                 )
@@ -106,7 +112,10 @@ prefMenu ZZ := n ->(
                 if n==3 then (<<"\nNow using the direct read method\n"; fIn = false; fOut = true; uIn = false; conOut = true; betIn = true; prefMenu 0;) else(
                     if n==4 then (<<"EXITING"; menu 0;) else(
                         r = read "Enter in the preference number:\t";
-                        prefMenu (value r);
+                        if (not instance(value r, ZZ)) then(<<"Please enter a number!"; prefMenu 0)
+                        else(
+                            prefMenu (value r);
+                        )
                     )
                 )
             )
@@ -124,7 +133,10 @@ manMenu ZZ := n ->(
                     if n==3 then (<<"NOT YET IMPLEMENTED"; manMenu 0) else(
                         if n==4 then (<<"EXITING"; menu 0) else(
                             r = read "Enter in the manual page number:\t";
-                            menu (value r);
+                            if (not instance(value r, ZZ)) then(<<"Please enter a number!"; manMenu 0)
+                            else(
+                                manMenu (value r);
+                            )
                         )
                     )
                 )
