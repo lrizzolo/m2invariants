@@ -74,10 +74,8 @@ Lucas
 
 KNOWN ISSUES:
 
-	1. There is no current implementation of the Derksen-Gandini algorithm.
-	2. Typing exit doesn't always work
-	3. Crashes are not handled gracefully 
-	4. Not all inputs are validated, therefore it is possible to input something that will
+	1. Typing exit doesn't always work
+	2. Not all inputs are validated, therefore it is possible to input something that will
 		crash the program.
 	5. No implementation of the Parallel Algorithm
 	6. No implementation of the random generators.
